@@ -20,6 +20,3 @@ This is a simple Python script that lets you play Rock Paper Scissors against th
 
 ## How it works
 You will be prompted to enter your choice (rock, paper, or scissors). The computer will randomly select its choice, and the winner will be displayed. The game can be played repeatedly until you choose to exit.
-
-## License
-This project is open source and free to use.
