@@ -4,9 +4,12 @@ cpu_wins = 0
 ties = 0
 # Add import for random
 import random
+
+
 # Function to choose a random throw
 def random_throw():
     return random.choice(["rock", "paper", "scissors"])
+
 
 # Function to normalize user input
 def normalize_throw(throw):
@@ -19,6 +22,7 @@ def normalize_throw(throw):
         return "scissors"
     else:
         return None
+
 
 # Logic for determining the winner
 def rps_logic(throw1, throw2):
@@ -47,16 +51,19 @@ def rps_logic(throw1, throw2):
     return "Invalid input! Please choose rock, paper, or scissors."
 
 
-
 def main():
     global player_wins, cpu_wins, ties
     print("Welcome to Rock Paper Scissors!")
     print(f"Score: Player Wins: {player_wins}, CPU Wins: {cpu_wins}, Ties: {ties}")
     while True:
-        user_input = input("Enter your throw (rock, paper, scissors or r/p/s), or 'q' to quit: ")
+        user_input = input(
+            "Enter your throw (rock, paper, scissors or r/p/s), or 'q' to quit: "
+        )
         if user_input.strip().lower() in ["q", "quit", "exit"]:
             print("Thanks for playing!")
-            print(f"Final Score: Player Wins: {player_wins}, CPU Wins: {cpu_wins}, Ties: {ties}")
+            print(
+                f"Final Score: Player Wins: {player_wins}, CPU Wins: {cpu_wins}, Ties: {ties}"
+            )
             break
         computer_throw = random_throw()
         print(f"Computer chose: {computer_throw}")
@@ -69,11 +76,16 @@ def main():
             continue
         if t1 == t2:
             ties += 1
-        elif (t1 == "rock" and t2 == "scissors") or (t1 == "paper" and t2 == "rock") or (t1 == "scissors" and t2 == "paper"):
+        elif (
+            (t1 == "rock" and t2 == "scissors")
+            or (t1 == "paper" and t2 == "rock")
+            or (t1 == "scissors" and t2 == "paper")
+        ):
             player_wins += 1
         else:
             cpu_wins += 1
         print(f"Score: Player Wins: {player_wins}, CPU Wins: {cpu_wins}, Ties: {ties}")
+
 
 if __name__ == "__main__":
     main()
