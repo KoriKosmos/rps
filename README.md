@@ -14,7 +14,7 @@ This is a simple Python script that lets you play Rock Paper Scissors against th
 1. Open a terminal and navigate to the project directory.
 2. Run the script:
 	```powershell
-	python main.py
+	python rps.py
 	```
 3. Follow the on-screen prompts to play.
 

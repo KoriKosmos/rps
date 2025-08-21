@@ -1,8 +1,10 @@
 # Add import for json and os
 import json
 import os
+
 # File to store scores
 SCORE_FILE = "scores.json"
+
 
 # Function to load scores from file
 def load_scores():
@@ -19,14 +21,12 @@ def load_scores():
             pass
     return 0, 0, 0
 
+
 # Function to save scores to file
 def save_scores(player_wins, cpu_wins, ties):
     with open(SCORE_FILE, "w") as f:
-        json.dump({
-            "player_wins": player_wins,
-            "cpu_wins": cpu_wins,
-            "ties": ties
-        }, f)
+        json.dump({"player_wins": player_wins, "cpu_wins": cpu_wins, "ties": ties}, f)
+
 
 # Global score variables
 player_wins = 0
