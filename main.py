@@ -1,3 +1,33 @@
+# Add import for json and os
+import json
+import os
+# File to store scores
+SCORE_FILE = "scores.json"
+
+# Function to load scores from file
+def load_scores():
+    if os.path.exists(SCORE_FILE):
+        try:
+            with open(SCORE_FILE, "r") as f:
+                data = json.load(f)
+                return (
+                    data.get("player_wins", 0),
+                    data.get("cpu_wins", 0),
+                    data.get("ties", 0),
+                )
+        except Exception:
+            pass
+    return 0, 0, 0
+
+# Function to save scores to file
+def save_scores(player_wins, cpu_wins, ties):
+    with open(SCORE_FILE, "w") as f:
+        json.dump({
+            "player_wins": player_wins,
+            "cpu_wins": cpu_wins,
+            "ties": ties
+        }, f)
+
 # Global score variables
 player_wins = 0
 cpu_wins = 0
@@ -53,6 +83,7 @@ def rps_logic(throw1, throw2):
 
 def main():
     global player_wins, cpu_wins, ties
+    player_wins, cpu_wins, ties = load_scores()
     print("Welcome to Rock Paper Scissors!")
     print(f"Score: Player Wins: {player_wins}, CPU Wins: {cpu_wins}, Ties: {ties}")
     while True:
@@ -64,6 +95,7 @@ def main():
             print(
                 f"Final Score: Player Wins: {player_wins}, CPU Wins: {cpu_wins}, Ties: {ties}"
             )
+            save_scores(player_wins, cpu_wins, ties)
             break
         computer_throw = random_throw()
         print(f"Computer chose: {computer_throw}")
@@ -85,6 +117,7 @@ def main():
         else:
             cpu_wins += 1
         print(f"Score: Player Wins: {player_wins}, CPU Wins: {cpu_wins}, Ties: {ties}")
+        save_scores(player_wins, cpu_wins, ties)
 
 
 if __name__ == "__main__":
