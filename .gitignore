@@ -9,4 +9,7 @@ wheels/
 # Virtual environments
 .venv
 main.spec
+rps.spec
+*.spec
 scores.json
+rps.spec
